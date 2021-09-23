@@ -1,6 +1,6 @@
 <div align="center">
     <img width="250px" src="mars.png" />
-    <h1>Mars v0.1</h1>
+    <h1>Mars</h1>
     <p>Create Minecraft plugins easier, like make a plugin on earth but in mars</p>
 </div>
 
