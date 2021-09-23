@@ -108,7 +108,7 @@ List of all intents:
 
 (you can start Mars like this: ```Mars.init(this, Intent.CHAT, Intent.ITEMS)```)
 
-If you wanna learn more [Click here to see documentation]() 
+If you wanna learn more [Click here to see documentation](https://github.com/GumpDev/mars/wiki) 
 
 <br>
 <a id="faq"></a>
