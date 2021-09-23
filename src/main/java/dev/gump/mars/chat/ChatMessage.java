@@ -32,6 +32,9 @@ public class ChatMessage {
         message = Utils.colorize( _msg);
         sound = _sound;
     }
+    public ChatMessage(String _msg){
+        message = Utils.colorize( _msg);
+    }
 
     public String getMessage(Player pl){ return message;}
     public Sound getSound(){
