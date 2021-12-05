@@ -34,7 +34,7 @@ public class TabInstance {
     }
 
     public void render(Player player){
-        if(getHeader().length() > 0 && getHeader().length() > 0)
+        if(getHeader().length() > 0 && getFooter().length() > 0)
             player.setPlayerListHeaderFooter(getHeader(),getFooter());
         else if(getHeader().length() > 0)
             player.setPlayerListHeader(getFooter());
