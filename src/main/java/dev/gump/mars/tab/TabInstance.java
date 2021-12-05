@@ -10,7 +10,7 @@ public class TabInstance {
     String header, footer;
     public TabInstance(String header, String footer){
         setHeader(header);
-        setHeader(footer);
+        setFooter(footer);
     }
 
     public List<String> getHeaderList(){
