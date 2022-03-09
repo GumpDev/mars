@@ -1,7 +1,7 @@
 package dev.gump.mars.inventory;
 
 public class GUIDefaultMessages {
-    static String pageInfo = "&Page: [0] of [1]";
+    static String pageInfo = "&7Page: [0] of [1]";
     static String playerPrefix = "&6";
 
     public static String getPageInfo() {

@@ -1,5 +1,6 @@
 package dev.gump.mars.items;
 
+import com.sun.org.apache.bcel.internal.Const;
 import dev.gump.mars.Mars;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
@@ -9,6 +10,7 @@ import org.bukkit.attribute.Attribute;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.ShapedRecipe;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.persistence.PersistentDataType;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -21,15 +23,15 @@ public class CustomItem {
 
     public CustomItem(String uuid, Material material){
         this.uuid = uuid;
-        this.itemStack = Mars.items.createItemStack(material);
+        this.itemStack = Mars.items.setPersistentData(Mars.items.createItemStack(material), PersistentDataType.STRING, ConstItem.marsId , uuid);
     }
     public CustomItem(String uuid, Material material, String displayName){
         this.uuid = uuid;
-        this.itemStack = Mars.items.createItemStack(material, 1, displayName);
+        this.itemStack = Mars.items.setPersistentData(Mars.items.createItemStack(material, 1, displayName), PersistentDataType.STRING, ConstItem.marsId , uuid);
     }
     public CustomItem(String uuid, Material material, String displayName, List<String> lore){
         this.uuid = uuid;
-        this.itemStack = Mars.items.createItemStack(material, 1, displayName, lore);
+        this.itemStack = Mars.items.setPersistentData(Mars.items.createItemStack(material, 1, displayName, lore), PersistentDataType.STRING, ConstItem.marsId , uuid);
     }
 
     public String getDisplayName() {
@@ -43,6 +45,10 @@ public class CustomItem {
     }
     public String getUUID() {
         return uuid;
+    }
+    public Boolean is(ItemStack item){
+        if(!Mars.items.hasPersistentData(item, PersistentDataType.STRING, ConstItem.marsId)) return false;
+        return Mars.items.getPersistentData(item, PersistentDataType.STRING, ConstItem.marsId).equals(uuid);
     }
 
     public ItemStack getItemStack() {

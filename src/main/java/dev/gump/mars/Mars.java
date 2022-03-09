@@ -2,6 +2,7 @@ package dev.gump.mars;
 
 import dev.gump.mars.armor_stand.ArmorStandManager;
 import dev.gump.mars.chat.ChatManager;
+import dev.gump.mars.entity.EntityManager;
 import dev.gump.mars.interactions.InteractionsManager;
 import dev.gump.mars.inventory.InventoryManager;
 import dev.gump.mars.items.ItemsManager;
@@ -26,6 +27,7 @@ public final class Mars {
 
     public static ArmorStandManager armorStand = new ArmorStandManager();
     public static ChatManager chat = new ChatManager();
+    public static EntityManager entity = new EntityManager();
     public static ItemsManager items = new ItemsManager();
     public static InteractionsManager interactions = new InteractionsManager();
     public static InventoryManager inventory = new InventoryManager();
@@ -44,6 +46,7 @@ public final class Mars {
         if(containIntent(Intent.INTERACTIONS, intentList)) interactions.init(plugin);
         if(containIntent(Intent.INVENTORY, intentList)) inventory.init(plugin);
         if(containIntent(Intent.ITEMS, intentList)) items.init(plugin);
+        if(containIntent(Intent.ENTITY, intentList)) entity.init(plugin);
     }
     static boolean containIntent(Intent intent, List<Intent> intents){
         return intents.contains(Intent.ALL) || intents.contains(intent);

@@ -1,6 +1,5 @@
 package dev.gump.mars.interactions;
 
-import dev.gump.mars.items.ItemsListener;
 import org.bukkit.Material;
 import org.bukkit.entity.Entity;
 import org.bukkit.inventory.ItemStack;

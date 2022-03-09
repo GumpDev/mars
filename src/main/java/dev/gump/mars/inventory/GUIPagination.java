@@ -29,7 +29,7 @@ public class GUIPagination{
 
     public GUI generateGUI(int page, int totalItems) {
         List<PageItem> items = this.action.onPageChange(page);
-        int maxPage = (int) Math.ceil((float)totalItems / 54);
+        int maxPage = (int) Math.ceil((float)totalItems / 45);
         ItemStack itemTitle = (this.itemMaterial != null) ? Mars.items.createItemStack(this.itemMaterial, page, title,
                 Arrays.asList(GUIDefaultMessages.getPageInfo().replace("[0]", page+"").replace("[1]", maxPage+""), " ", this.description)) : null;
         GUI gui = Mars.inventory.createGUI(this.title, 54, back, none, none, none, itemTitle != null ? itemTitle : none, none,

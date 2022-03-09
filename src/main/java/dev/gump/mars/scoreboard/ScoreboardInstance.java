@@ -88,6 +88,8 @@ public class ScoreboardInstance {
                 line = "";
             }
         }
+        if(!line.equals(""))
+            result.add(line);
         return result;
     }
 }
