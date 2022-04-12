@@ -23,8 +23,12 @@ public class Cooldown {
         }.runTaskTimer(plugin, 0, 20);
     }
 
-    public int isOnCooldown(Player player) {
-        return cooldowns.getOrDefault(player.getUniqueId().toString(),-1);
+    public boolean isOnCooldown(Player player) {
+        return cooldowns.containsKey(player.getUniqueId().toString());
+    }
+
+    public int getTimeLeft(Player player) {
+        return cooldowns.getOrDefault(player.getUniqueId().toString(), -1);
     }
 
     public void addCooldown(Player player, int seconds) {
