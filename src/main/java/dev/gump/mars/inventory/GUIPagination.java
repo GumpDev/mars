@@ -6,14 +6,43 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.scheduler.BukkitRunnable;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+
 public class GUIPagination{
+    public class AditionalItem{
+        ItemStack stack;
+        GUIClickEvent action;
+        public AditionalItem(ItemStack stack, GUIClickEvent action){
+            this.stack = stack;
+            this.action = action;
+        }
+
+        public ItemStack getStack() {
+            return stack;
+        }
+
+        public void setStack(ItemStack stack) {
+            this.stack = stack;
+        }
+
+        public GUIClickEvent getAction() {
+            return action;
+        }
+
+        public void setAction(GUIClickEvent action) {
+            this.action = action;
+        }
+    }
+
     Material itemMaterial = null;
     GUIPaginationEvents action;
     String title = null;
     String description = null;
+    boolean backButton = true;
+    List<AditionalItem> aditionalItems = new ArrayList<>();
 
     final ItemStack back = GUIDefaultItems.getBack();
     final ItemStack prev = GUIDefaultItems.getPrev();
@@ -27,12 +56,28 @@ public class GUIPagination{
         this.description = description;
     }
 
+    public boolean isBackButton() {
+        return backButton;
+    }
+
+    public void setBackButton(boolean backButton) {
+        this.backButton = backButton;
+    }
+
+    public List<AditionalItem> getAditionalItems() {
+        return aditionalItems;
+    }
+
+    public void setAditionalItems(List<AditionalItem> aditionalItems) {
+        this.aditionalItems = aditionalItems;
+    }
+
     public GUI generateGUI(int page, int totalItems) {
         List<PageItem> items = this.action.onPageChange(page);
         int maxPage = (int) Math.ceil((float)totalItems / 45);
         ItemStack itemTitle = (this.itemMaterial != null) ? Mars.items.createItemStack(this.itemMaterial, page, title,
                 Arrays.asList(GUIDefaultMessages.getPageInfo().replace("[0]", page+"").replace("[1]", maxPage+""), " ", this.description)) : null;
-        GUI gui = Mars.inventory.createGUI(this.title, 54, back, none, none, none, itemTitle != null ? itemTitle : none, none,
+        GUI gui = Mars.inventory.createGUI(this.title, 54, backButton ? back : none, none, none, none, itemTitle != null ? itemTitle : none, none,
                 none, (page != 1 ? prev : none), (page < maxPage ? next : none));
         int index = 9;
 
@@ -55,15 +100,20 @@ public class GUIPagination{
                     }
                 }.runTaskLater(Mars.getPlugin(), 5);
             });
+        if(backButton)
+            gui.OnClick(0, event -> {
+                new BukkitRunnable(){
+                    @Override
+                    public void run() {
+                        guiPagination.action.onBack(event);
+                    }
+                }.runTaskLater(Mars.getPlugin(), 5);
+            });
 
-        gui.OnClick(0, event -> {
-            new BukkitRunnable(){
-                @Override
-                public void run() {
-                    guiPagination.action.onBack(event);
-                }
-            }.runTaskLater(Mars.getPlugin(), 5);
-        });
+        int ci = backButton ? 1 : 0;
+
+        for (AditionalItem item : aditionalItems)
+            gui.setItem(ci, item.getStack(), item.getAction());
 
         if(items.size() > 0)
             for (PageItem item : items) {
