@@ -87,8 +87,10 @@ public class GUIPagination{
 
         int ci = backButton ? 1 : 0;
 
-        for (AditionalItem item : aditionalItems)
+        for (AditionalItem item : aditionalItems) {
             gui.setItem(ci, item.getStack(), item.getAction());
+            ci++;
+        }
 
         if(items.size() > 0)
             for (PageItem item : items) {
