@@ -1,0 +1,4 @@
+name: MockPlugin
+version: '${project.version}'
+main: dev.gump.mars.MockPlugin
+api-version: 1.16

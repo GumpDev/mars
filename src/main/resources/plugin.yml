@@ -1,0 +1,4 @@
+name: Mars
+version: '${project.version}'
+main: dev.gump.mars.Mars
+api-version: 1.19
