@@ -1,4 +1,4 @@
-package dev.gump.mars.config;
+package dev.gump.mars;
 
 public enum Intent {
   ALL,

@@ -1,12 +1,12 @@
 package dev.gump.mars;
 
-import dev.gump.mars.config.Intent;
 import java.util.Arrays;
 import java.util.List;
 import org.bukkit.plugin.Plugin;
 
 public final class Mars {
-  static Plugin plugin;
+
+  private static Plugin plugin;
 
   public static void setPlugin(Plugin plugin) {
     Mars.plugin = plugin;

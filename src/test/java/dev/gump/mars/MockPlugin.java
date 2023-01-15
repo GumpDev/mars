@@ -7,6 +7,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.plugin.java.JavaPluginLoader;
 
 public class MockPlugin extends JavaPlugin {
+
   static Plugin plugin;
 
   public MockPlugin() {
@@ -21,6 +22,7 @@ public class MockPlugin extends JavaPlugin {
   @Override
   public void onEnable() {
     plugin = this;
+    Mars.init(this);
   }
 
   @Override

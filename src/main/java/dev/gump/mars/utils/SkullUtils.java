@@ -25,8 +25,8 @@ import org.bukkit.inventory.meta.SkullMeta;
  *
  * @author Dean B on 12/28/2016.
  */
-public class HeadUtils {
-  private HeadUtils() {}
+public class SkullUtils {
+  private SkullUtils() {}
 
   private static boolean warningPosted = false;
 
